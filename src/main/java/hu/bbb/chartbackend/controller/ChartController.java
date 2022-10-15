@@ -1,6 +1,6 @@
 package hu.bbb.chartbackend.controller;
 
-import hu.bbb.chartbackend.entity.Chart;
+import hu.bbb.chartbackend.entity.ChartEntity;
 import hu.bbb.chartbackend.model.dto.ChartDto;
 import hu.bbb.chartbackend.repository.ChartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +16,12 @@ public class ChartController {
     private ChartRepository chartRepository;
 
     @PutMapping("/chart")
-    public ResponseEntity<Chart> createChart(@RequestBody ChartDto chartDto) {
-        Chart chart = new Chart();
-        chart.setOptions(chartDto.getOptions());
-        chart.setType(chartDto.getType());
-        this.chartRepository.save(chart);
+    public ResponseEntity<ChartEntity> createChart(@RequestBody ChartDto chartDto) {
+        ChartEntity chartEntity = new ChartEntity();
+        chartEntity.setOptions(chartDto.getOptions());
+        chartEntity.setType(chartDto.getType());
+        this.chartRepository.save(chartEntity);
 
-        return ResponseEntity.ok(chart);
+        return ResponseEntity.ok(chartEntity);
     }
 }

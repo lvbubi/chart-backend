@@ -2,20 +2,15 @@ server:
   port: 8081
 
 spring:
-  liquibase:
-    enabled: true
-    drop-first: false
-    change-log: classpath:db/changelog/db.changelog-master.xml
-    default-schema: public
   datasource:
     driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: example
+    username: kong
+    password: kong
     url: jdbc:postgresql://localhost:5432/postgres
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none
     generate-ddl: true
 springdoc:
   swagger-ui:

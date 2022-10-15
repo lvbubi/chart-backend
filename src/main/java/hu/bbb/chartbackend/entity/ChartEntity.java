@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-public class Chart {
+public class ChartEntity {
 
     @Id
     @SequenceGenerator(name="seq",sequenceName="oracle_seq")
