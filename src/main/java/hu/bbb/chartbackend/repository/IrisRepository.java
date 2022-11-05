@@ -1,6 +1,5 @@
 package hu.bbb.chartbackend.repository;
 
-import hu.bbb.chartbackend.entity.ChartEntity;
 import hu.bbb.chartbackend.entity.IrisEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
