@@ -9,14 +9,12 @@ import javax.persistence.*;
 @Setter
 @Entity
 public class ChartConfigurationEntity {
-
     @Id
     @SequenceGenerator(name="seq",sequenceName="oracle_seq")
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq")
     private Long id;
-
+    @Column
     private String type;
-
-    @Column(length = 10000)
-    private Object options;
+    @Column
+    private ChartOptions chartOptions;
 }

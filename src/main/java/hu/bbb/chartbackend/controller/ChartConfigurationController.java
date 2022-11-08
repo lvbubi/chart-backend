@@ -4,6 +4,7 @@ import hu.bbb.chartbackend.entity.ChartConfigurationEntity;
 import hu.bbb.chartbackend.mapper.ChartConfigurationMapper;
 import hu.bbb.chartbackend.model.dto.ChartConfigurationDto;
 import hu.bbb.chartbackend.repository.ChartRepository;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -20,11 +21,14 @@ public class ChartConfigurationController {
     ChartRepository chartRepository;
     ChartConfigurationMapper chartConfigurationMapper;
 
+    @Operation(summary = "Save Chart Configuration", description = "Save configurations of the generated diagram")
     @PutMapping("/save")
-    public ResponseEntity<ChartConfigurationEntity> createChart(@RequestBody ChartConfigurationDto chartConfigurationDto) {
-        ChartConfigurationEntity chartConfigurationEntity = chartConfigurationMapper.toEntity(chartConfigurationDto);
-        this.chartRepository.save(chartConfigurationEntity);
+    public ResponseEntity<ChartConfigurationEntity> createChart(
+            @RequestBody ChartConfigurationDto chartConfigurationDto) {
+        ChartConfigurationEntity configuration = chartConfigurationMapper.toEntity(chartConfigurationDto);
+        this.chartRepository.save(configuration);
 
-        return ResponseEntity.ok(chartConfigurationEntity);
+        return ResponseEntity.ok(configuration);
     }
+
 }

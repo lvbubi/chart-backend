@@ -2,7 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.5.5'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
-    id "org.liquibase.gradle" version "2.0.4"
+    id 'io.swagger.core.v3.swagger-gradle-plugin' version '2.2.6'
 }
 
 group = 'hu.bbb'
@@ -31,14 +31,9 @@ dependencies {
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.5.5'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.5'
-    implementation 'org.mapstruct:mapstruct:1.5.2.Final'
-
-    liquibaseRuntime 'org.postgresql:postgresql:42.2.24'
-    liquibaseRuntime group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
-    liquibaseRuntime('ch.qos.logback:logback-core:1.2.6')
-    liquibaseRuntime('ch.qos.logback:logback-classic:1.2.6')
-    liquibaseRuntime 'org.liquibase.ext:liquibase-hibernate5:4.5.0'
-    liquibaseRuntime sourceSets.main.output
+    implementation 'org.mapstruct:mapstruct:1.5.3.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+    implementation 'io.swagger.core.v3:swagger-annotations:2.2.6'
 }
 
 test {
@@ -51,4 +46,10 @@ jar {
                 'Main-Class': 'hu.bbb.chartbackend.ChartBackendApplication'
         )
     }
+}
+
+compileJava {
+    options.compilerArgs = [
+            '-Amapstruct.defaultComponentModel=spring'
+    ]
 }
